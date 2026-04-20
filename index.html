@@ -323,7 +323,6 @@ html { scroll-behavior: smooth; }
 <script>
 function toggleChat() {
   const window = document.getElementById('chat-window');
-  // Simple toggle logic for the window visibility
   window.style.display = (window.style.display === 'flex' ? 'none' : 'flex');
 }
 
@@ -345,27 +344,38 @@ function sendChat() {
       
       const lowerText = userText.toLowerCase();
       
-      // Personal Info
+      // Personal Info (Based on Resume)
       if (lowerText.includes('live') || lowerText.includes('address') || lowerText.includes('location')) {
         aiMsg.textContent = "Gale lives in Hda. Sto Domingo, Brgy. Crossing Magallon, Moises Padilla, Negros Occidental. 🍓";
       } else if (lowerText.includes('name') || lowerText.includes('who')) {
         aiMsg.textContent = "Her full name is Shannon Gale Dela Cruz. 🍒";
       } else if (lowerText.includes('age') || lowerText.includes('born')) {
-        aiMsg.textContent = "Gale was born on March 30, 2006, making her 20 years old! 🎂";
-      } 
+        aiMsg.textContent = "Gale was born on March 30, 2006, in Tacloban City, Leyte. She is 20 years old! 🎂";
+      } else if (lowerText.includes('parents') || lowerText.includes('father') || lowerText.includes('mother')) {
+        aiMsg.textContent = "Her father is Reynante A. Esanan and her mother is Rolina D. Esanan. 👨‍👩‍👧";
+      } else if (lowerText.includes('height') || lowerText.includes('weight')) {
+        aiMsg.textContent = "Gale is 156cm tall and weighs 45kg. 🍓";
+      } else if (lowerText.includes('religion')) {
+        aiMsg.textContent = "Gale's religion is INC. 🙏";
+      }
+      
+      // Education (Based on Resume)
+      else if (lowerText.includes('study') || lowerText.includes('college') || lowerText.includes('education')) {
+        aiMsg.textContent = "Gale is a 2nd year BSIT student (2024-2025) at Central Philippines State University - Moises Padilla Campus! 🎓 She attended La Castellana National High School (2017-2022) and Crossing Magallon Elementary (2017-2018).";
+      }
       
       // Portfolio & Resume Info
       else if (lowerText.includes('portfolio') || lowerText.includes('work')) {
-        aiMsg.textContent = "Gale has creative portfolios on Canva and Figma! They showcase her skills in E-commerce UI, T-shirt designs, and web layouts. Check out the 'Links' section above! 🎨✨";
+        aiMsg.textContent = "Gale has creative portfolios on Canva and Figma! They showcase her skills in E-commerce UI, T-shirt designs, and web layouts. Check out the 'Links' section! 🎨✨";
       } else if (lowerText.includes('resume') || lowerText.includes('cv')) {
-        aiMsg.textContent = "Gale's resume is available for download in the 'Contact Me' section. It details her BSIT studies, OJT experience, and role as Project Manager for 'Check U Heart Vendo'! 📄💻";
+        aiMsg.textContent = "Gale's resume is available for download in the 'Contact Me' section. It highlights her objective to enhance her programming skills and real-world IT experience! 📄💻";
       }
       
       // Skills & Experience
       else if (lowerText.includes('skill')) {
-        aiMsg.textContent = "Gale is skilled in HTML, PHP, MySQL, Canva, and Figma! 🎨";
-      } else if (lowerText.includes('experience')) {
-        aiMsg.textContent = "Gale has OJT experience from Feb 2024 (Moises Padilla) and extensive design and coding background! 💼";
+        aiMsg.textContent = "Gale is skilled in Computer Skills, Video & Photo Editing, Canva & Figma Design, and basic PHP & MySQL! 🎨";
+      } else if (lowerText.includes('experience') || lowerText.includes('ojt')) {
+        aiMsg.textContent = "Gale completed OJT in Moises Padilla (Feb 5–16, 2024), where she edited tarpaulins and T-shirt prints. She was also the Project Manager for the 'Check U Heart Vendo' project! 💼";
       }
       
       // Personality Triggers
@@ -379,7 +389,7 @@ function sendChat() {
       
       // Default
       else {
-        aiMsg.textContent = "I'm not sure about that, but feel free to explore the portfolio or ask about her skills! 🍒";
+        aiMsg.textContent = "I'm not sure about that, but feel free to explore the portfolio or ask about her skills and background! 🍒";
       }
       
       content.appendChild(aiMsg);
