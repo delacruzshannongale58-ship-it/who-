@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dela Cruz Portfolio 🍓🍒</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Courgette&display=swap');
+
+:root {
+  --strawberry-red: #ff4d6d;
+  --cherry-dark: #d6336c;
+  --pink-light: #ffb3c6;
+  --metal-dark: #111;
+  --screen-bg: #fff;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #222;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Floating Fruit Background */
+.leaf {
+  position: fixed;
+  font-size: 26px;
+  opacity: 0.8;
+  animation: floatFruits 18s linear infinite;
+  z-index: 0;
+}
+@keyframes floatFruits {
+  0% { transform: translateY(-50px) rotate(0deg); opacity:0;}
+  10% { opacity:1;}
+  100% { transform: translateY(110vh) rotate(360deg); opacity:0;}
+}
+.leaf:nth-child(1){left:10%; animation-delay:0s;}
+.leaf:nth-child(2){left:30%; animation-delay:3s;}
+.leaf:nth-child(3){left:55%; animation-delay:5s;}
+.leaf:nth-child(4){left:75%; animation-delay:2s;}
+.leaf:nth-child(5){left:90%; animation-delay:6s;}
+
+/* iPhone Frame Styling */
+.iphone-frame {
+  width: 400px;
+  max-width: 95vw;
+  height: 90vh;
+  background: linear-gradient(145deg, var(--metal-dark) 60%, #2c0b0e);
+  border-radius: 60px;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 3px solid var(--strawberry-red);
+  box-shadow: 0 10px 50px rgba(255,77,109,0.3), 0 0 25px rgba(255,77,109,0.5), inset 0 0 15px rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10;
+}
+.iphone-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 60px;
+  background: radial-gradient(circle at top left, rgba(255,77,109,0.25), transparent 60%), linear-gradient(145deg, rgba(255,255,255,0.08), transparent 40%, rgba(255,255,255,0.1) 80%);
+  pointer-events: none;
+}
+
+.power-button {position: absolute; right: -8px; top: 120px; width: 6px; height: 50px; background: linear-gradient(180deg, #ffb3c6, #ff4d6d); border-radius: 3px; box-shadow: 0 0 10px rgba(255,77,109,0.7);}
+.volume {position: absolute; right: -8px; width: 6px; height: 40px; background: linear-gradient(180deg, #ffb3c6, #ff4d6d); border-radius: 3px; box-shadow: 0 0 8px rgba(255,77,109,0.7);}
+.volume.top { top: 60px; }
+.volume.bottom { top: 220px; }
+
+.screen {flex: 1; overflow-y: auto; padding: 15px; background: var(--screen-bg); border-radius: 50px; box-shadow: inset 0 0 25px rgba(255,77,109,0.1); position: relative; z-index: 1;}
+
+.status-bar {display: flex; justify-content: space-between; align-items: center; color: #555; font-size: 14px; padding: 6px 15px; background: rgba(255,240,245,0.7); border-radius: 25px; margin-bottom: 8px; box-shadow: 0 0 8px rgba(255,77,109,0.2);}
+.status-bar i { margin-left: 8px; color: var(--cherry-dark); }
+
+.iphone-notch { width: 130px; height: 25px; background: #1a1a1a; border-radius: 20px 20px 0 0; margin: 6px auto; box-shadow: 0 0 6px rgba(255,77,109,0.5); }
+
+.portfolio-name {font-family: 'Courgette', cursive; font-size: 30px; color: var(--strawberry-red); text-align: center; margin-bottom: 15px; text-shadow: 0 0 10px var(--pink-light); letter-spacing: 1px;}
+
+section { width: 90%; margin: 15px 0; padding: 20px; background: rgba(255,240,245,0.95); border-radius: 25px; box-shadow: 0 5px 15px rgba(255,77,109,0.25); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s; font-family: 'Poppins', sans-serif;}
+section:hover { transform: scale(1.02); box-shadow: 0 0 25px rgba(255,77,109,0.35); }
+
+h2 {color: var(--cherry-dark); border-bottom: 2px solid var(--pink-light); display: inline-block; padding-bottom: 5px; margin-bottom: 10px; font-weight: 600; font-family: 'Poppins', sans-serif;}
+
+#home img { border-radius: 50%; width: 130px; height: 130px; box-shadow: 0 0 25px rgba(255,77,109,0.6); border: 4px solid white; cursor: pointer; animation: floatProfile 4s ease-in-out infinite alternate;}
+@keyframes floatProfile { 0% { transform: translateY(0) scale(1); } 50% { transform: translateY(-10px) scale(1.05); } 100% { transform: translateY(0) scale(1); } }
+
+.media-gallery { display: flex; overflow-x: auto; gap: 15px; padding: 10px; }
+.media-item { flex: 0 0 auto; text-align: center; transition: transform 0.3s; cursor: pointer; font-family: 'Poppins', sans-serif; }
+.media-item:hover { transform: scale(1.05); }
+.media-item img, .media-item iframe { border: 4px solid; border-radius: 20px; width: auto; max-width: 220px; height: auto; max-height: 150px; padding: 3px; background: linear-gradient(90deg, #ff4d6d, #ffb3c6, #d6336c, #ff99ac, #ff4d6d); background-size: 300% 300%; animation: rainbowBorder 4s linear infinite;}
+@keyframes rainbowBorder { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+button { background: linear-gradient(135deg, var(--pink-light), var(--cherry-dark)); color: white; border: none; border-radius: 12px; padding: 10px 22px; cursor: pointer; font-weight: 600; font-family: 'Poppins', sans-serif; transition: 0.3s; }
+button:hover { transform: scale(1.1); background: linear-gradient(135deg,var(--cherry-dark),var(--strawberry-red)); box-shadow: 0 0 25px var(--strawberry-red); }
+
+.bottom-nav { height: 60px; background: linear-gradient(180deg, #ffb3c6, #ffccd5); border-top: 2px solid #ff99ac; display: flex; justify-content: space-around; align-items: center; position: sticky; bottom: 0; border-radius: 0 0 50px 50px; z-index: 15; }
+.bottom-nav a { text-decoration: none; color: var(--cherry-dark); display: flex; flex-direction: column; align-items: center; font-size: 12px; transition: 0.3s; font-family: 'Poppins', sans-serif; }
+.bottom-nav a i { font-size: 20px; }
+.bottom-nav a:hover { transform: scale(1.2); color: var(--strawberry-red); text-shadow: 0 0 10px var(--strawberry-red); }
+
+/* CHATBOT STYLING */
+#chat-bubble {
+  position: fixed;
+  bottom: 80px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  background: var(--strawberry-red);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 5px 15px rgba(255,77,109,0.5);
+}
+#chat-window {
+  position: absolute;
+  bottom: 75px;
+  right: 10px;
+  width: 300px;
+  height: 400px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1001;
+  border: 1px solid var(--pink-light);
+}
+.chat-header {
+  background: var(--strawberry-red);
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+.chat-content {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #fff9fa;
+}
+.chat-footer {
+  padding: 10px;
+  display: flex;
+  border-top: 1px solid #eee;
+}
+.chat-footer input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 15px;
+  outline: none;
+}
+.msg {
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 80%;
+  font-size: 14px;
+}
+.msg.ai { background: #eee; align-self: flex-start; border-bottom-left-radius: 2px; }
+.msg.user { background: var(--pink-light); align-self: flex-end; border-bottom-right-radius: 2px; color: var(--cherry-dark); }
+
+footer { text-align: center; margin: 15px 0; font-family: 'Poppins', sans-serif; }
+footer p { font-size: 12px; color: var(--cherry-dark); margin-top: 8px; }
+
+html { scroll-behavior: smooth; }
+
+.contact-cards { display: flex; flex-direction: column; gap: 15px; align-items: center; margin-top: 15px; width: 100%; }
+.contact-card { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 15px 20px; width: 90%; max-width: 300px; background: linear-gradient(145deg, #ffe0eb, #ffb3c6); border-radius: 20px; box-shadow: 0 5px 15px rgba(255,77,109,0.3); transition: transform 0.3s, box-shadow 0.3s; text-align: center; }
+.contact-card i { font-size: 28px; color: #d6336c; margin-bottom: 5px; }
+.contact-card p { margin: 0; font-weight: 600; color: #ff4d6d; }
+.contact-card a, .contact-card span { color: #d6336c; font-weight: 500; word-break: break-all; text-decoration: none; }
+.contact-card a:hover { text-decoration: underline; }
+.contact-card:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,77,109,0.5); }
+
+</style>
+</head>
+<body>
+
+<div class="leaf">🍓</div>
+<div class="leaf">🍒</div>
+<div class="leaf">🍓</div>
+<div class="leaf">🍒</div>
+<div class="leaf">🍉</div>
+
+<div class="iphone-frame">
+  <div class="volume top"></div>
+  <div class="volume bottom"></div>
+  <div class="power-button"></div>
+  <div class="iphone-notch"></div>
+
+  <div class="screen">
+    <div class="status-bar">
+      <span>9:41</span>
+      <span><i class="fas fa-wifi"></i> <i class="fas fa-battery-three-quarters"></i></span>
+    </div>
+
+    <div class="portfolio-name">Gale's Portfolio🍒</div>
+
+    <section id="home">
+      <img src="p.jpg.jpg" alt="Profile Picture" class="zoom-img">
+      <p>🍓 Creative student passionate about <b>design</b> and <b>technology</b>.</p>
+      <p>💻 Skilled in <b>HTML, PHP, MySQL</b> and web design.</p>
+      <p>🎨 Using <b>Canva</b> and <b>Figma</b> for digital art.</p>
+    </section>
+
+    <section id="experience">
+      <h2>💼 Experience</h2>
+      <p><b>OJT — Feb 5–16, 2024</b> | Moises Padilla</p>
+      <ul style="text-align:left; margin-left:20px;">
+        <li>Edited tarpaulin designs for Fiesta 🌸</li>
+        <li>Designed creative T-shirt prints 👕</li>
+        <li>Joined coding competition 💻</li>
+      </ul>
+    </section>
+
+    <section id="media">
+      <h2>📸 Captured Moments</h2>
+      <div class="media-gallery">
+        <div class="media-item"><img src="picture1.jpg" class="zoom-img"><p>E-commerce UI</p></div>
+        <div class="media-item"><img src="picture2.jpg" class="zoom-img"><p>T-shirt Layout</p></div>
+        <div class="media-item"><img src="mango3.jpg.jpg" class="zoom-img"><p>Product Design</p></div>
+      </div>
+
+      <h2>🎥 Video Journal</h2>
+      <div class="media-gallery">
+        <div class="media-item"><iframe src="https://www.youtube.com/embed/NSAOrGb9orM" frameborder="0" allowfullscreen></iframe><p>📹 Nature</p></div>
+        <div class="media-item"><iframe src="https://www.youtube.com/embed/OxqooRcaw8w" frameborder="0" allowfullscreen></iframe><p>📹 Daydream</p></div>
+        <div class="media-item"><iframe src="https://www.youtube.com/embed/OFYF67NkO4w" frameborder="0" allowfullscreen></iframe><p>📹 Feelings</p></div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <h2>📜 Certificate of Participation</h2>
+      <div class="media-gallery">
+        <div class="media-item"><img src="cert1.jpg.heic" class="zoom-img"><p>Cisco Networking Fundamentals Participation</p></div>
+        <div class="media-item"><img src="cert2.jpg.heic" class="zoom-img"><p>Integrative Fundation for Innovative Systematic Solution</p></div>
+        <div class="media-item"><img src="cert3.jpg.heic" class="zoom-img"><p>IT Seminar</p></div>
+        <div class="media-item"><img src="cert4.jpg" class="zoom-img"><p>Cisco Certificate</p></div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>💡 Skills</h2>
+      <ul style="text-align:left;">
+        <li>💻 Computer Skills</li>
+        <li>🎬 Video & Photo Editing</li>
+        <li>🎨 Canva & Figma Design</li>
+        <li>🧠 Basic PHP & MySQL</li>
+      </ul>
+    </section>
+
+    <section id="links">
+      <h2>🔗 My Links</h2>
+      <div style="display:flex; flex-direction:column; gap:10px; align-items:center;">
+        <a href="https://delacruzshannongalewebsite.my.canva.site/portfolio" target="_blank"><button>🍓 Canva Portfolio</button></a>
+        <a href="https://www.figma.com/proto/n5v20gpb0RLge3E4tG7b7u/Untitled?node-id=1-4&t=B2CarzcrargfTO5d-1" target="_blank"><button>🍒 Figma Portfolio</button></a>
+        <a href="https://www.figma.com/proto/hzNhyOzMHQycfUor1zFlfm/Untitled?node-id=0-1&t=YL3AaPZ3JtZP5nxr-1" target="_blank"><button>🍉 E-Commerce Figma Design</button></a>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>📩 Contact Me</h2>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <p>Email</p>
+          <a href="mailto:delacruzshannongale58@gmail.com">delacruzshannongale58@gmail.com</a>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-phone"></i>
+          <p>Phone</p>
+          <span>+63 970 405 6791</span>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-user"></i>
+          <p>Name</p>
+          <span>Shannon Gale Dela Cruz</span>
+        </div>
+        <div class="contact-card">
+          <i class="fas fa-file"></i>
+          <p>Resume</p>
+          <a href="resume.pdf.PNG" download>Download My Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <div id="chat-bubble" onclick="toggleChat()">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div id="chat-window">
+      <div class="chat-header">
+        <span>Gale AI Assistant</span>
+        <span onclick="toggleChat()" style="cursor:pointer">×</span>
+      </div>
+      <div class="chat-content" id="chat-content">
+        <div class="msg ai">Hi! I'm Gale's AI. How can I help you today? 🍒</div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Ask me something...">
+        <button onclick="sendChat()" style="padding: 5px 10px; font-size: 12px; margin-left: 5px;">Send</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 Shannon Gale Dela Cruz 🍒</p>
+    </footer>
+
+    <div class="bottom-nav">
+      <a href="#home"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="#experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+      <a href="#media"><i class="fas fa-camera"></i><span>Media</span></a>
+      <a href="#certificates"><i class="fas fa-certificate"></i><span>Certificates</span></a>
+      <a href="#skills"><i class="fas fa-lightbulb"></i><span>Skills</span></a>
+       <a href="#links"><i class="fas fa-link"></i><span>Links</span></a>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleChat() {
+  const window = document.getElementById('chat-window');
+  const bubble = document.getElementById('chat-bubble');
+  
+  if (window.style.display === 'flex') {
+    window.style.display = 'none';
+    bubble.style.display = 'flex'; // Show the bubble again when closed
+  } else {
+    window.style.display = 'flex';
+    bubble.style.display = 'none'; // Hide the bubble when window is open
+  }
+}
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const content = document.getElementById('chat-content');
+  const userText = input.value.trim();
+
+  if (userText) {
+    const userMsg = document.createElement('div');
+    userMsg.className = 'msg user';
+    userMsg.textContent = userText;
+    content.appendChild(userMsg);
+    input.value = '';
+
+    setTimeout(() => {
+      const aiMsg = document.createElement('div');
+      aiMsg.className = 'msg ai';
+      
+      const lowerText = userText.toLowerCase();
+      
+      // Personal Info
+      if (lowerText.includes('live') || lowerText.includes('address') || lowerText.includes('location')) {
+        aiMsg.textContent = "Gale lives in Hda. Sto Domingo, Brgy. Crossing Magallon, Moises Padilla, Negros Occidental. 🍓";
+      } else if (lowerText.includes('name') || lowerText.includes('who')) {
+        aiMsg.textContent = "Her full name is Shannon Gale Dela Cruz. 🍒";
+      } else if (lowerText.includes('age') || lowerText.includes('born')) {
+        aiMsg.textContent = "Gale was born on March 30, 2006, making her 20 years old! 🎂";
+      } 
+      
+      // Portfolio & Resume Info
+      else if (lowerText.includes('portfolio') || lowerText.includes('work')) {
+        aiMsg.textContent = "Gale has creative portfolios on Canva and Figma! They showcase her skills in E-commerce UI, T-shirt designs, and web layouts. Check out the 'Links' section above! 🎨✨";
+      } else if (lowerText.includes('resume') || lowerText.includes('cv')) {
+        aiMsg.textContent = "Gale's resume is available for download in the 'Contact Me' section. It details her BSIT studies, OJT experience, and role as Project Manager for 'Check U Heart Vendo'! 📄💻";
+      }
+      
+      // Skills & Experience
+      else if (lowerText.includes('skill')) {
+        aiMsg.textContent = "Gale is skilled in HTML, PHP, MySQL, Canva, and Figma! 🎨";
+      } else if (lowerText.includes('experience')) {
+        aiMsg.textContent = "Gale has OJT experience from Feb 2024 (Moises Padilla) and extensive design and coding background! 💼";
+      }
+      
+      // Personality Triggers
+      else if (lowerText === 'okay') {
+        aiMsg.textContent = "Okay! 🍓";
+      } else if (lowerText.includes('pretty') || lowerText.includes('beautiful')) {
+        aiMsg.textContent = "Yes, she's very pretty! 😊🍒";
+      } else if (lowerText.includes('sure')) {
+        aiMsg.textContent = "Yes, sure! 🍉";
+      } 
+      
+      // Default
+      else {
+        aiMsg.textContent = "I'm not sure about that, but feel free to explore the portfolio or ask about her skills! 🍒";
+      }
+      
+      content.appendChild(aiMsg);
+      content.scrollTop = content.scrollHeight;
+    }, 600);
+  }
+}
+</script>
+
+</body>
+</html>
