@@ -113,23 +113,6 @@ button:hover { transform: scale(1.1); background: linear-gradient(135deg,var(--c
 .bottom-nav a:hover { transform: scale(1.2); color: var(--strawberry-red); text-shadow: 0 0 10px var(--strawberry-red); }
 
 /* CHATBOT STYLING */
-#chat-bubble {
-  position: fixed;
-  bottom: 80px;
-  right: 25px;
-  width: 55px;
-  height: 55px;
-  background: var(--strawberry-red);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 5px 15px rgba(255,77,109,0.5);
-}
 #chat-window {
   position: absolute;
   bottom: 75px;
@@ -221,7 +204,7 @@ html { scroll-behavior: smooth; }
     <div class="portfolio-name">Gale's Portfolio🍒</div>
 
     <section id="home">
-      <img src="p.jpg.jpg" alt="Profile Picture" class="zoom-img">
+      <img src="p.jpg.jpg" alt="Profile Picture" class="zoom-img" onclick="toggleChat()">
       <p>🍓 Creative student passionate about <b>design</b> and <b>technology</b>.</p>
       <p>💻 Skilled in <b>HTML, PHP, MySQL</b> and web design.</p>
       <p>🎨 Using <b>Canva</b> and <b>Figma</b> for digital art.</p>
@@ -308,9 +291,6 @@ html { scroll-behavior: smooth; }
       </div>
     </section>
 
-    <div id="chat-bubble" onclick="toggleChat()">
-      <i class="fas fa-robot"></i>
-    </div>
     <div id="chat-window">
       <div class="chat-header">
         <span>Gale AI Assistant</span>
@@ -343,15 +323,8 @@ html { scroll-behavior: smooth; }
 <script>
 function toggleChat() {
   const window = document.getElementById('chat-window');
-  const bubble = document.getElementById('chat-bubble');
-  
-  if (window.style.display === 'flex') {
-    window.style.display = 'none';
-    bubble.style.display = 'flex'; // Show the bubble again when closed
-  } else {
-    window.style.display = 'flex';
-    bubble.style.display = 'none'; // Hide the bubble when window is open
-  }
+  // Simple toggle logic for the window visibility
+  window.style.display = (window.style.display === 'flex' ? 'none' : 'flex');
 }
 
 function sendChat() {
